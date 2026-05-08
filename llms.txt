@@ -1,0 +1,22 @@
+# mklaunchd
+
+> A macOS CLI that generates launchd plists, validates them, and prints the launchctl commands to load them. The macOS equivalent of mkunit for systemd.
+
+mklaunchd is a developer tool for personal automation on macOS. It writes a valid launchd plist for any binary or script, validates it against common mistakes (KeepAlive on a scheduled job, relative paths, UserName on a user agent), creates the log directory, and prints the exact `launchctl bootstrap`, `print`, `list`, and `bootout` commands needed to manage the resulting service. It does not wrap, replace, or hide launchctl — once the plist is on disk you are back in standard Apple tooling.
+
+It supports three scopes: user agents, system agents, and launch daemons, each written to the appropriate plist directory with the matching launchd domain. It supports plugins via the git convention — any executable named `mklaunchd-<command>` on PATH becomes a subcommand. macOS 13+, Swift, MIT licensed, Homebrew distributed.
+
+## Documentation
+
+- [README](https://github.com/uradical/mklaunchd/blob/main/README.md): Install instructions, quick-start usage, examples.
+- [Man page source](https://github.com/uradical/mklaunchd/blob/main/docs/mklaunchd.1.md): Complete CLI reference covering every subcommand and flag.
+- [Plugin authoring guide](https://github.com/uradical/mklaunchd/blob/main/docs/plugins.md): How to extend mklaunchd with custom subcommands; environment contract; examples in Swift, Go, and shell.
+
+## Source
+
+- [GitHub repository](https://github.com/uradical/mklaunchd): Swift source, issue tracker.
+- [Homebrew formula](https://github.com/uradical/mklaunchd/blob/main/Formula/mklaunchd.rb): `brew tap uradical/mklaunchd && brew install mklaunchd`.
+
+## Built by
+
+- [uRadical](https://uradical.io): Personal-automation tooling for developers.
